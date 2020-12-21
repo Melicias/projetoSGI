@@ -9,10 +9,10 @@ animar();
 function init(){
     cena = new THREE.Scene();
 
-    camara = new THREE.PerspectiveCamera(70, 800 / 600, 0.01, 10);
-    camara.position.x = 6;
-    camara.position.y = 4;
-    camara.position.z = 7;
+    camara = new THREE.PerspectiveCamera(70, 800 / 600, 0.01, 100);
+    camara.position.x = 10;
+    camara.position.y = 10;
+    camara.position.z = 20;
 
     var can = document.getElementById('meuCanvas');
     renderer = new THREE.WebGLRenderer({canvas: can});
@@ -23,7 +23,7 @@ function init(){
     var controlos = new THREE.OrbitControls( camara, renderer.domElement );
 
     var carregador = new THREE.GLTFLoader(); 
-    carregador.load('cena.gltf', function ( gltf ) {
+    carregador.load('modelo/vintage-bed_t3.gltf', function ( gltf ) {
         cena.add( gltf.scene );
         cena.traverse( 
             function (elemento) {
@@ -37,8 +37,11 @@ function init(){
     });
 
     var luzPonto1 = new THREE.PointLight( "white" );
-    luzPonto1.position.set( 5, 3, 5 );
+    luzPonto1.position.set( 100, 100, 0 );
     cena.add(luzPonto1);
+
+    //var grelha = new THREE.GridHelper(); 
+    //cena.add( grelha );
 
     relogio = new THREE.Clock();
     misturador = new THREE.AnimationMixer(cena);
