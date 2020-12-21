@@ -641,9 +641,10 @@
 <div class="row">
     <div class="col-xs-12 col-sm-7 col-lg-8">
         <div class="prod-img-container">
-            <canvas  id="meuCanvas"></canvas>
+            <canvas  id="meuCanvas" style="max-width: 100%; width: auto; height: auto;"></canvas>
+            <h5 style="float: left;">Use o seu cursor para alterar a vista do produto.</h5>
         </div>
-
+        
     </div>
     <div class="col-xs-12 col-sm-5 col-lg-4 fix-product-info">
         <h2>CAMA do estilo X</h2>
@@ -675,9 +676,35 @@
                 <option value="df4006" data-image="images/colors/vermelho.png">Vermelho</option>
             </select>
         </div>
+        <br>
+        <h3>Opções de Visualização</h3>
+        <div>
+            <h4>&#9642;&nbsp;&nbsp;&nbsp;<span class="selectOption" onclick="plSelected()">Alterar ponto de luz</span></h4>
+            <h4>&#9642;&nbsp;&nbsp;&nbsp;<span class="selectOption" onclick="animationSelected()" >Animações</span></h4>
+            <h5 id="animation1" class="animationOption">&#9642;&nbsp;&nbsp;Animação 1</h5>
+            <h5 id="animation2" class="animationOption">&#9642;&nbsp;&nbsp;Animação 2</h5>
+        </div>
     </div>
-</div> 
-
+</div>
+<script>
+    function plSelected(){
+        document.getElementById("animation1").style.display = "none";
+        document.getElementById("animation2").style.display = "none";
+    }
+    function animationSelected(){
+        document.getElementById("animation1").style.display = "block";
+        document.getElementById("animation2").style.display = "block";
+    }
+</script>
+<style>
+    .selectOption:hover {
+      text-decoration: underline;
+    }
+    .animationOption{
+        display: none;
+        margin-left: 20px;
+    }
+</style> 
 <script language="javascript">
     $(document).ready(function(e) {
         try {
