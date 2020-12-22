@@ -2,19 +2,20 @@ var camera, cena, renderer;
 var geometry, material, mesh, stats;
 var renderer, relogio, misturador ;
 var acaoY, acaoZ, acaoR;
+var lightNumber = 0;
+var luzIntensidade = 1;
 
 init();
 animar();
 
 function init(){
     cena = new THREE.Scene();
-
-    camara = new THREE.PerspectiveCamera(70, 800 / 600, 0.01, 100);
-    camara.position.x = 10;
+    var can = document.getElementById('meuCanvas');
+    camara = new THREE.PerspectiveCamera(45, can.parentElement.clientHeight/can.parentElement.clientWidth, 1, 1000);
+    camara.position.x = 20;
     camara.position.y = 10;
     camara.position.z = 20;
 
-    var can = document.getElementById('meuCanvas');
     renderer = new THREE.WebGLRenderer({canvas: can});
 
     renderer.setSize( can.parentElement.clientHeight, can.parentElement.clientWidth );
@@ -23,7 +24,7 @@ function init(){
     var controlos = new THREE.OrbitControls( camara, renderer.domElement );
 
     var carregador = new THREE.GLTFLoader(); 
-    carregador.load('modelo/vintage-bed_t3.gltf', function ( gltf ) {
+    carregador.load('modelo/vintage-bed.gltf', function ( gltf ) {
         cena.add( gltf.scene );
         cena.traverse( 
             function (elemento) {
@@ -36,9 +37,9 @@ function init(){
         });
     });
 
-    var luzPonto1 = new THREE.PointLight( "white" );
-    luzPonto1.position.set( 100, 100, 0 );
-    cena.add(luzPonto1);
+    var luz1 = new THREE.PointLight("luz0");
+    luz1.position.set( 10, 10, 10 );
+    cena.add(luz1);
 
     //var grelha = new THREE.GridHelper(); 
     //cena.add( grelha );
@@ -79,4 +80,19 @@ function alterarValorDropDown() {
             acaoR.setLoop( THREE.LoopPingPong);
         break;
     }
+}
+
+function changeLight(){
+    lightNumber++;
+    switch(lightNumber){
+        case 0:
+
+        break;
+
+        case 1:
+
+        break;
+    }
+
+    
 }
