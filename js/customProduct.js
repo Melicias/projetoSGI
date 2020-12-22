@@ -2,7 +2,6 @@ var camera, cena, renderer;
 var geometry, material, mesh, stats;
 var renderer, relogio, misturador ;
 var acaoY, acaoZ, acaoR;
-var lightNumber = 0;
 var luzIntensidade = 1;
 
 init();
@@ -37,15 +36,27 @@ function init(){
         });
     });
 
-    var luz1 = new THREE.PointLight("luz0");
-    luz1.position.set( 10, 10, 10 );
+    var luz0 = new THREE.PointLight("white");
+    luz0.position.set( 10, 10, 10 );
+    luz0.name = "luz0";
+    cena.add(luz0);
+    var luz1 = new THREE.PointLight("white");
+    luz1.position.set( 10, 20, 0 );
+    luz1.intensity = 0;
+    luz1.name = "luz1";
     cena.add(luz1);
+    var luz2 = new THREE.PointLight("white");
+    luz2.position.set( 20, 10, 5 );
+    luz2.intensity = 0;
+    luz2.name = "luz2";
+    cena.add(luz2);
 
     //var grelha = new THREE.GridHelper(); 
     //cena.add( grelha );
 
     relogio = new THREE.Clock();
     misturador = new THREE.AnimationMixer(cena);
+    console.log(cena);
 
 }
 
@@ -82,15 +93,22 @@ function alterarValorDropDown() {
     }
 }
 
-function changeLight(){
-    lightNumber++;
+function changeLight(lightNumber){
     switch(lightNumber){
         case 0:
-
+            cena.getObjectByName("luz0").intensity = luzIntensidade;
+            cena.getObjectByName("luz1").intensity = 0;
+            cena.getObjectByName("luz2").intensity = 0;
         break;
-
         case 1:
-
+            cena.getObjectByName("luz1").intensity = luzIntensidade;
+            cena.getObjectByName("luz0").intensity = 0;
+            cena.getObjectByName("luz2").intensity = 0;
+        break;
+        case 2:
+            cena.getObjectByName("luz2").intensity = luzIntensidade;
+            cena.getObjectByName("luz0").intensity = 0;
+            cena.getObjectByName("luz1").intensity = 0;
         break;
     }
 
