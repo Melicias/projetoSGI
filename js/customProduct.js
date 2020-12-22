@@ -3,6 +3,9 @@ var geometry, material, mesh, stats;
 var renderer, relogio, misturador ;
 var acaoY, acaoZ, acaoR;
 var luzIntensidade = 1;
+var cena;
+var divan;
+var estruturaCama;
 
 init();
 animar();
@@ -20,6 +23,10 @@ function init(){
     renderer.setSize( can.parentElement.clientHeight, can.parentElement.clientWidth );
     renderer.render( cena, camara );
 
+    renderer.shadowMap.enabled = true;
+    cena.castShadow = true;
+    cena.receiveShadow = true; 
+
     var controlos = new THREE.OrbitControls( camara, renderer.domElement );
 
     var carregador = new THREE.GLTFLoader(); 
@@ -27,27 +34,40 @@ function init(){
         cena.add( gltf.scene );
         cena.traverse( 
             function (elemento) {
-                clipe = THREE.AnimationClip.findByName( gltf.animations, 'LocY' );
+                /*clipe = THREE.AnimationClip.findByName( gltf.animations, 'LocY' );
                 acaoY = misturador.clipAction( clipe );
                 clipe = THREE.AnimationClip.findByName( gltf.animations, 'LocZ' );
                 acaoZ = misturador.clipAction( clipe );
                 clipe = THREE.AnimationClip.findByName( gltf.animations, 'RotZ' );
-                acaoR = misturador.clipAction( clipe );
+                acaoR = misturador.clipAction( clipe );*/
+                if(elemento.isMesh){
+                    elemento.castShadow = true;
+                    elemento.receiveShadow = true;
+                    if(elemento.name == "bed-structure"){
+                        estruturaCama = elemento;
+                    }
+                    if(elemento.name == "divan"){
+                        divan = elemento;
+                    }
+                }
         });
     });
 
     var luz0 = new THREE.PointLight("white");
     luz0.position.set( 10, 10, 10 );
     luz0.name = "luz0";
+    luz0.castShadow = true;
     cena.add(luz0);
     var luz1 = new THREE.PointLight("white");
     luz1.position.set( 10, 20, 0 );
     luz1.intensity = 0;
+    luz1.castShadow = true;
     luz1.name = "luz1";
     cena.add(luz1);
     var luz2 = new THREE.PointLight("white");
     luz2.position.set( 20, 10, 5 );
     luz2.intensity = 0;
+    luz2.castShadow = true;
     luz2.name = "luz2";
     cena.add(luz2);
 
@@ -56,7 +76,7 @@ function init(){
 
     relogio = new THREE.Clock();
     misturador = new THREE.AnimationMixer(cena);
-    //console.log(cena);
+    console.log(cena);
 
     var slider = document.getElementById("myRange");
     slider.oninput = function() {
@@ -125,4 +145,14 @@ function changeLight(lightNumber){
             cena.getObjectByName("luz1").intensity = 0;
         break;
     }
+}
+
+function onChangeColor(){
+    var hex = document.getElementById("DropDownCor").value;
+    var r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16);
+    var cor = new THREE.Color("rgb("+r+","+g+","+b+")");
+    divan.material.color = cor;
+    estruturaCama.material.color = cor;
 }
