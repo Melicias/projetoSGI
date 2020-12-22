@@ -685,13 +685,13 @@
                 <span>Intensidade da luz:</span><input type="range" min="1" max="10" value="10" class="slider" id="myRange">
             </div>
             <a>&#9642;&nbsp;&nbsp;&nbsp;<span class="selectOption" onclick="plSelected()">Alterar ponto de luz</span></a>
-            <a id="luz0" onclick="changeLight(0)" class="animationOption">&#9642;&nbsp;&nbsp;Ponto de luz 1</a>
-            <a id="luz1" onclick="changeLight(1)" class="animationOption">&#9642;&nbsp;&nbsp;Ponto de luz 2</a>
-            <a id="luz2" onclick="changeLight(2)" class="animationOption">&#9642;&nbsp;&nbsp;Ponto de luz 3</a>
+            <a id="luz0" class="animationOption">&#9642;&nbsp;&nbsp;<span onclick="changeLight(0)" class="selectOption">Ponto de luz 1</span></a>
+            <a id="luz1" class="animationOption">&#9642;&nbsp;&nbsp;<span onclick="changeLight(1)" class="selectOption">Ponto de luz 2</span></a>
+            <a id="luz2" class="animationOption">&#9642;&nbsp;&nbsp;<span onclick="changeLight(2)" class="selectOption">Ponto de luz 3</span></a>
             <br>
             <a>&#9642;&nbsp;&nbsp;&nbsp;<span class="selectOption" onclick="animationSelected()" >Animações</span></a>
-            <a id="animation1" class="animationOption">&#9642;&nbsp;&nbsp;Animação 1</a>
-            <a id="animation2" class="animationOption">&#9642;&nbsp;&nbsp;Animação 2</a>
+            <a id="animation1" class="animationOption">&#9642;&nbsp;&nbsp;<span class="selectOption">Animação 1</span></a>
+            <a id="animation2" class="animationOption">&#9642;&nbsp;&nbsp;<span class="selectOption">Animação 2</span></a>
         </div>
     </div>
 </div>
@@ -720,6 +720,7 @@
 <style>
     .selectOption:hover {
       text-decoration: underline;
+      cursor: default;
     }
     .animationOption{
         display: none;
