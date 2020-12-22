@@ -6,6 +6,7 @@ var luzIntensidade = 1;
 var cena;
 var divan;
 var estruturaCama;
+var colorBordo;
 
 init();
 animar();
@@ -44,6 +45,7 @@ function init(){
                     elemento.castShadow = true;
                     elemento.receiveShadow = true;
                     if(elemento.name == "bed-structure"){
+                        colorBordo = elemento.material.color;
                         estruturaCama = elemento;
                     }
                     if(elemento.name == "divan"){
@@ -152,7 +154,25 @@ function onChangeColor(){
     var r = parseInt(hex.slice(1, 3), 16),
         g = parseInt(hex.slice(3, 5), 16),
         b = parseInt(hex.slice(5, 7), 16);
-    var cor = new THREE.Color("rgb("+r+","+g+","+b+")");
-    divan.material.color = cor;
-    estruturaCama.material.color = cor;
+    if(hex != "#111111"){
+        var cor = new THREE.Color("rgb("+r+","+g+","+b+")");
+        divan.material.color = cor;
+        estruturaCama.material.color = cor;
+    }else{
+        divan.material.color = colorBordo;
+        estruturaCama.material.color = colorBordo;
+    }
 }
+
+function cbSombrasOnClick() {
+    var checkBox = document.getElementById("cbSombras");
+    if (checkBox.checked){
+        cena.getObjectByName("luz0").castShadow = true;
+        cena.getObjectByName("luz1").castShadow = true;
+        cena.getObjectByName("luz2").castShadow = true;
+    } else {
+        cena.getObjectByName("luz0").castShadow = false;
+        cena.getObjectByName("luz1").castShadow = false;
+        cena.getObjectByName("luz2").castShadow = false;
+    }
+  }

@@ -656,6 +656,7 @@
                 <option value="#ffff00" data-image="images/colors/amarelo.png">Amarelo</option>
                 <option value="#42c0fb" data-image="images/colors/azul.png">Azul</option>
                 <option value="#ffffff" data-image="images/colors/branco.png">Branco</option>
+                <option value="#111111" data-image="images/colors/bordo.png">Bordô</option>
                 <option value="#9e7d69"  data-image="images/colors/castanho.png">Castanho</option>
                 <option value="#ffa400" data-image="images/colors/laranja.png">Laranja</option>
                 <option value="#000000" data-image="images/colors/preto.png">Preto</option>
@@ -681,6 +682,10 @@
         <br>
         <h3>Opções de Visualização</h3>
         <div>
+            <div>
+                <label for="sombras" style="text-align: right; clear: both; float:left; margin-right:15px;">Sombras </label>
+                <input type="checkbox"id="cbSombras" style="display: block; height: 20px; width: 20px; -webkit-appearance: checkbox !important;" checked="checked" onclick="cbSombrasOnClick()">
+            </div>
             <div class="slidecontainer" style="width:150px;">
                 <span>Intensidade da luz:</span><input type="range" min="1" max="10" value="10" class="slider" id="myRange">
             </div>
