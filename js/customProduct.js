@@ -56,7 +56,21 @@ function init(){
 
     relogio = new THREE.Clock();
     misturador = new THREE.AnimationMixer(cena);
-    console.log(cena);
+    //console.log(cena);
+
+    var slider = document.getElementById("myRange");
+    slider.oninput = function() {
+        luzIntensidade = this.value/10;
+        if(cena.getObjectByName("luz0").intensity != 0){
+            cena.getObjectByName("luz0").intensity = luzIntensidade;
+        }else{
+            if(cena.getObjectByName("luz1").intensity != 0){
+                cena.getObjectByName("luz1").intensity = luzIntensidade;
+            }else{
+                cena.getObjectByName("luz2").intensity = luzIntensidade;
+            }
+        }
+    }
 
 }
 
@@ -111,6 +125,4 @@ function changeLight(lightNumber){
             cena.getObjectByName("luz1").intensity = 0;
         break;
     }
-
-    
 }

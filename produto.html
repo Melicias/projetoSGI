@@ -32,6 +32,8 @@
     <script src="https://cdn.rawgit.com/mrdoob/three.js/r109/examples/js/controls/OrbitControls.js"></script>
 
 
+    <link href="css/css.css" rel="stylesheet"/>
+
     <script src="msdropdown/js/jquery/jquery-1.9.0.min.js"></script>
     <!-- <msdropdown> -->
     <link rel="stylesheet" type="text/css" href="msdropdown/css/msdropdown/dd.css" />
@@ -679,6 +681,9 @@
         <br>
         <h3>Opções de Visualização</h3>
         <div>
+            <div class="slidecontainer" style="width:150px;">
+                <span>Intensidade da luz:</span><input type="range" min="1" max="10" value="10" class="slider" id="myRange">
+            </div>
             <a>&#9642;&nbsp;&nbsp;&nbsp;<span class="selectOption" onclick="plSelected()">Alterar ponto de luz</span></a>
             <a id="luz0" onclick="changeLight(0)" class="animationOption">&#9642;&nbsp;&nbsp;Ponto de luz 1</a>
             <a id="luz1" onclick="changeLight(1)" class="animationOption">&#9642;&nbsp;&nbsp;Ponto de luz 2</a>
