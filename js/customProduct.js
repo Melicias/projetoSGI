@@ -94,12 +94,40 @@ function init(){
         }
     }
 
+    var cor = localStorage["color"];
+    var textura = localStorage["textura"];
+
+    if(cor != 0){
+        var dropDownCor = document.getElementById("DropDownCor");
+        dropDownCor.value = cor;
+    }
+    if(textura != 0){
+        var dropDownTextura = document.getElementById("DropDownTextura");
+        dropDownTextura.value = textura;
+    }
+
 }
 
 function animar() { 
     requestAnimationFrame( animar );
     renderer.render( cena, camara ); 
     misturador.update( relogio.getDelta() );
+}
+
+function newTexture(textura) {
+    var newTexturePath = "modelo/"+textura+".jpg";
+
+    var tex = THREE.ImageUtils.loadTexture(newTexturePath);
+    estruturaCama.material.map = tex;
+    estruturaCama.material.needsUpdate = true;
+    divan.material.map = tex;
+    divan.material.needsUpdate = true;
+}
+
+
+function onChangeTexture(){
+    var textura = document.getElementById("DropDownTextura").value;
+    newTexture(textura);
 }
 
 function alterarValorDropDown() {
