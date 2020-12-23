@@ -6,7 +6,6 @@ var luzIntensidade = 1;
 var cena;
 var divan;
 var estruturaCama;
-var colorBordo;
 
 init();
 animar();
@@ -45,7 +44,6 @@ function init(){
                     elemento.castShadow = true;
                     elemento.receiveShadow = true;
                     if(elemento.name == "bed-structure"){
-                        colorBordo = elemento.material.color;
                         estruturaCama = elemento;
                     }
                     if(elemento.name == "divan"){
@@ -115,13 +113,20 @@ function animar() {
 }
 
 function newTexture(textura) {
-    var newTexturePath = "modelo/"+textura+".jpg";
+    if(textura == "nenhuma"){
+        estruturaCama.material.map = null;
+        estruturaCama.material.needsUpdate = true;
+        divan.material.map = null;
+        divan.material.needsUpdate = true;
+    }else{
+        var newTexturePath = "modelo/"+textura+".jpg";
 
-    var tex = THREE.ImageUtils.loadTexture(newTexturePath);
-    estruturaCama.material.map = tex;
-    estruturaCama.material.needsUpdate = true;
-    divan.material.map = tex;
-    divan.material.needsUpdate = true;
+        var tex = THREE.ImageUtils.loadTexture(newTexturePath);
+        estruturaCama.material.map = tex;
+        estruturaCama.material.needsUpdate = true;
+        divan.material.map = tex;
+        divan.material.needsUpdate = true;
+    }
 }
 
 
@@ -182,14 +187,9 @@ function onChangeColor(){
     var r = parseInt(hex.slice(1, 3), 16),
         g = parseInt(hex.slice(3, 5), 16),
         b = parseInt(hex.slice(5, 7), 16);
-    if(hex != "#111111"){
-        var cor = new THREE.Color("rgb("+r+","+g+","+b+")");
-        divan.material.color = cor;
-        estruturaCama.material.color = cor;
-    }else{
-        divan.material.color = colorBordo;
-        estruturaCama.material.color = colorBordo;
-    }
+    var cor = new THREE.Color("rgb("+r+","+g+","+b+")");
+    divan.material.color = cor;
+    estruturaCama.material.color = cor;
 }
 
 function cbSombrasOnClick() {

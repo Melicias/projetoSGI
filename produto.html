@@ -653,9 +653,9 @@
         <div>
             <h4>escolha uma cor:</h4>
             <select style="width:200px" id="DropDownCor" onchange="onChangeColor()">
+                <option value="#ffffff" data-image="">Nenhuma</option>
                 <option value="#ffff00" data-image="images/colors/amarelo.png">Amarelo</option>
                 <option value="#42c0fb" data-image="images/colors/azul.png">Azul</option>
-                <option value="#ffffff" data-image="images/colors/branco.png">Branco</option>
                 <option value="#111111" data-image="images/colors/bordo.png">Bordô</option>
                 <option value="#9e7d69"  data-image="images/colors/castanho.png">Castanho</option>
                 <option value="#ffa400" data-image="images/colors/laranja.png">Laranja</option>
@@ -668,7 +668,11 @@
         <div>
             <h4>escolha uma textura:</h4>
             <select style="width:200px" id="DropDownTextura" onchange="onChangeTexture()">
+                <option value="nenhuma" data-image="">Nenhuma</option>
+                <option value="betao" data-image="images/materials/betao.jpg">betão</option>
                 <option value="Wood023_2K_ColorPink" data-image="images/materials/Wood023_2K_ColorPink.jpg">Madeira</option>
+                <option value="madeira_branca" data-image="images/materials/madeira_branca.jpg">Madeira branca</option>
+                <option value="marmore" data-image="images/materials/marmore.jpg">Marmore</option>
                 <option value="metalTexture" data-image="images/materials/metalTexture.jpg">Metal</option>
             </select>
         </div>
