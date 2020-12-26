@@ -202,6 +202,28 @@ function cbSombrasOnClick() {
     }
 }
 
+function animationSelected(){
+    if(document.getElementById("animation1").style.display == "block"){
+        document.getElementById("animation1").style.display = "none";
+        document.getElementById("animation2").style.display = "none";
+        if(document.getElementById("animation11").style.display == "block"){
+            document.getElementById("animation11").style.display = "none";
+            document.getElementById("animation12").style.display = "none";
+            document.getElementById("animation13").style.display = "none";
+            stopAction(acao1);
+        }
+        if(document.getElementById("animation21").style.display == "block"){
+            document.getElementById("animation21").style.display = "none";
+            document.getElementById("animation22").style.display = "none";
+            document.getElementById("animation23").style.display = "none";
+            stopAction(acao2);
+        }
+    }else{
+        document.getElementById("animation1").style.display = "block";
+        document.getElementById("animation2").style.display = "block";
+    }
+}
+
 
 function animateAction1(){
     if(document.getElementById("animation11").style.display == "block"){
