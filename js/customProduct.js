@@ -188,8 +188,53 @@ function cbSombrasOnClick() {
 }
 
 
-function animatee(){
-    acao1.forEach(element => {
+function animateAction1(){
+    if(document.getElementById("animation11").style.display == "block"){
+        document.getElementById("animation11").style.display = "none";
+        document.getElementById("animation12").style.display = "none";
+        document.getElementById("animation13").style.display = "none";
+        stopAction(acao1);
+    }else{
+        document.getElementById("animation11").style.display = "block";
+        document.getElementById("animation12").style.display = "block";
+        document.getElementById("animation13").style.display = "block";
+        startAction(acao1);
+    }
+}
+
+function startAction1(){
+    startAction(acao1);
+}
+
+function stopAction1(){
+    stopAction(acao1);
+}
+
+function pauseAction1(){
+    pauseAction(acao1);
+}
+
+function startAction(acao){
+    acao.forEach(element => {
         element.play();
+        if(element.paused){
+            element.paused = false;
+        }
+    });
+}
+
+function stopAction(acao){
+    acao.forEach(element => {
+        element.stop();
+    });
+}
+
+function pauseAction(acao){
+    acao.forEach(element => {
+        if(element.paused){
+            element.paused = false;
+        }else{
+            element.paused = true;
+        }
     });
 }
