@@ -2,6 +2,7 @@ var camera, cena, renderer;
 var geometry, material, mesh, stats;
 var renderer, relogio, misturador ;
 var acao1 = [];
+var acao2 = [];
 var luzIntensidade = 1;
 var cena;
 var divan;
@@ -65,6 +66,7 @@ function init(){
     var luz0 = new THREE.PointLight("white");
     luz0.position.set( 10, 10, 10 );
     luz0.name = "luz0";
+    luz0.intensity = 1;
     luz0.castShadow = true;
     cena.add(luz0);
     var luz1 = new THREE.PointLight("white");
@@ -79,6 +81,10 @@ function init(){
     luz2.castShadow = true;
     luz2.name = "luz2";
     cena.add(luz2);
+    var light = new THREE.AmbientLight( 0x404040 ); // soft white light
+    light.intensity = 0;
+    light.name = "ambientLight";
+    cena.add(light);
 
     //var grelha = new THREE.GridHelper(); 
     //cena.add( grelha );
@@ -164,6 +170,15 @@ function changeLight(lightNumber){
     }
 }
 
+function cbLuzAmbienteOnClick() {
+    var checkBox = document.getElementById("cbLuzAmbiente");
+    if(checkBox.checked){
+        cena.getObjectByName("ambientLight").intensity = 1;
+    }else{
+        cena.getObjectByName("ambientLight").intensity = 0;
+    }
+}
+
 function onChangeColor(){
     var hex = document.getElementById("DropDownCor").value;
     var r = parseInt(hex.slice(1, 3), 16),
@@ -212,6 +227,32 @@ function stopAction1(){
 
 function pauseAction1(){
     pauseAction(acao1);
+}
+
+function animateAction2(){
+    if(document.getElementById("animation21").style.display == "block"){
+        document.getElementById("animation21").style.display = "none";
+        document.getElementById("animation22").style.display = "none";
+        document.getElementById("animation23").style.display = "none";
+        stopAction(acao2);
+    }else{
+        document.getElementById("animation21").style.display = "block";
+        document.getElementById("animation22").style.display = "block";
+        document.getElementById("animation23").style.display = "block";
+        startAction(acao2);
+    }
+}
+
+function startAction2(){
+    startAction(acao2);
+}
+
+function stopAction2(){
+    stopAction(acao2);
+}
+
+function pauseAction2(){
+    pauseAction(acao2);
 }
 
 function startAction(acao){

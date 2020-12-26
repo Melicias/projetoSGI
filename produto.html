@@ -683,6 +683,10 @@
                 <label for="sombras" style="text-align: right; clear: both; float:left; margin-right:15px;">Sombras </label>
                 <input type="checkbox"id="cbSombras" style="display: block; height: 20px; width: 20px; -webkit-appearance: checkbox !important;" checked="checked" onclick="cbSombrasOnClick()">
             </div>
+            <div>
+                <label for="luzAmbiente" style="text-align: right; clear: both; float:left; margin-right:15px;">Luz ambiente </label>
+                <input type="checkbox"id="cbLuzAmbiente" style="display: block; height: 20px; width: 20px; -webkit-appearance: checkbox !important;" onclick="cbLuzAmbienteOnClick()">
+            </div>
             <div class="slidecontainer" style="width:150px;">
                 <span>Intensidade da luz:</span><input type="range" min="1" max="10" value="10" class="slider" id="myRange">
             </div>
@@ -696,7 +700,10 @@
             <a id="animation11" class="animation2Option" onclick="startAction1()">&#9642;&nbsp;&nbsp;<span class="selectOption">Começar</span></a>
             <a id="animation12" class="animation2Option" onclick="pauseAction1()">&#9642;&nbsp;&nbsp;<span class="selectOption">Parar</span></a>
             <a id="animation13" class="animation2Option" onclick="stopAction1()">&#9642;&nbsp;&nbsp;<span class="selectOption">Stop</span></a>
-            <a id="animation2" class="animationOption">&#9642;&nbsp;&nbsp;<span class="selectOption">Animação 2</span></a>
+            <a id="animation2" class="animationOption" onclick="animateAction2()">&#9642;&nbsp;&nbsp;<span class="selectOption">Animação 2</span></a>
+            <a id="animation21" class="animation2Option" onclick="startAction2()">&#9642;&nbsp;&nbsp;<span class="selectOption">Começar</span></a>
+            <a id="animation22" class="animation2Option" onclick="pauseAction2()">&#9642;&nbsp;&nbsp;<span class="selectOption">Parar</span></a>
+            <a id="animation23" class="animation2Option" onclick="stopAction2()">&#9642;&nbsp;&nbsp;<span class="selectOption">Stop</span></a>
         </div>
     </div>
 </div>
