@@ -32,7 +32,7 @@ function init(){
     var controlos = new THREE.OrbitControls( camara, renderer.domElement );
 
     var carregador = new THREE.GLTFLoader(); 
-    carregador.load('modelo/vintag.gltf', function ( gltf ) {
+    carregador.load('modelo/vintage-bed.gltf', function ( gltf ) {
         cena.add( gltf.scene );
         cena.traverse( 
             function (elemento) {
@@ -49,6 +49,20 @@ function init(){
                     acao1.push(misturador.clipAction(clipe));
                     clipe = THREE.AnimationClip.findByName( gltf.animations, 'pillowAction' );
                     acao1.push(misturador.clipAction(clipe));
+                }
+                if(acao2.length != 6) {
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'bed-mattressAnimation2' );
+                    acao2.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'bed-platformAnimation2' );
+                    acao2.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'bed-structureAnimation2' );
+                    acao2.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'divanAnimation2' );
+                    acao2.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'divan-mattressAnimation2' );
+                    acao2.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'pillowAnimation2' );
+                    acao2.push(misturador.clipAction(clipe));
                 }
                 if(elemento.isMesh){
                     elemento.castShadow = true;
