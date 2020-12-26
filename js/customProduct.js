@@ -1,11 +1,12 @@
 var camera, cena, renderer;
 var geometry, material, mesh, stats;
 var renderer, relogio, misturador ;
-var acaoY, acaoZ, acaoR;
+var acao1 = [];
 var luzIntensidade = 1;
 var cena;
 var divan;
 var estruturaCama;
+
 
 init();
 animar();
@@ -30,16 +31,24 @@ function init(){
     var controlos = new THREE.OrbitControls( camara, renderer.domElement );
 
     var carregador = new THREE.GLTFLoader(); 
-    carregador.load('modelo/vintage-bed.gltf', function ( gltf ) {
+    carregador.load('modelo/vintag.gltf', function ( gltf ) {
         cena.add( gltf.scene );
         cena.traverse( 
             function (elemento) {
-                /*clipe = THREE.AnimationClip.findByName( gltf.animations, 'LocY' );
-                acaoY = misturador.clipAction( clipe );
-                clipe = THREE.AnimationClip.findByName( gltf.animations, 'LocZ' );
-                acaoZ = misturador.clipAction( clipe );
-                clipe = THREE.AnimationClip.findByName( gltf.animations, 'RotZ' );
-                acaoR = misturador.clipAction( clipe );*/
+                if(acao1.length != 6) {
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'bed-mattressAction.001' );
+                    acao1.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'bed-platformAction.001' );
+                    acao1.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'bed-structureAction.001' );
+                    acao1.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'divanAction.001' );
+                    acao1.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'divan-mattressAction.001' );
+                    acao1.push(misturador.clipAction(clipe));
+                    clipe = THREE.AnimationClip.findByName( gltf.animations, 'pillowAction' );
+                    acao1.push(misturador.clipAction(clipe));
+                }
                 if(elemento.isMesh){
                     elemento.castShadow = true;
                     elemento.receiveShadow = true;
@@ -135,33 +144,6 @@ function onChangeTexture(){
     newTexture(textura);
 }
 
-function alterarValorDropDown() {
-    d = document.getElementById("menu_loop").value;
-    acaoZ.reset();
-    acaoY.reset();
-    acaoR.reset();
-    switch(d){
-        case "1":
-            acaoZ.setLoop( THREE.LoopOnce);
-            acaoY.setLoop( THREE.LoopOnce);
-            acaoR.setLoop( THREE.LoopOnce);
-            acaoZ.clampWhenFinished = true;
-            acaoY.clampWhenFinished = true;
-            acaoR.clampWhenFinished = true;
-        break;
-        case "2":
-            acaoZ.setLoop( THREE.LoopRepeat);
-            acaoY.setLoop( THREE.LoopRepeat);
-            acaoR.setLoop( THREE.LoopRepeat);
-        break;
-        case "3":
-            acaoZ.setLoop( THREE.LoopPingPong);
-            acaoY.setLoop( THREE.LoopPingPong);
-            acaoR.setLoop( THREE.LoopPingPong);
-        break;
-    }
-}
-
 function changeLight(lightNumber){
     switch(lightNumber){
         case 0:
@@ -203,4 +185,11 @@ function cbSombrasOnClick() {
         cena.getObjectByName("luz1").castShadow = false;
         cena.getObjectByName("luz2").castShadow = false;
     }
-  }
+}
+
+
+function animatee(){
+    acao1.forEach(element => {
+        element.play();
+    });
+}
