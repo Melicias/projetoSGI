@@ -73,6 +73,10 @@ function init(){
                     if(elemento.name == "divan"){
                         divan = elemento;
                     }
+                    if(divan != null && estruturaCama != null){
+                        newTexture(textura);
+                        onChangeColor();
+                    }
                 }
         });
     });
@@ -96,7 +100,7 @@ function init(){
     luz2.name = "luz2";
     cena.add(luz2);
     var light = new THREE.AmbientLight( 0x404040 ); // soft white light
-    light.intensity = 0;
+    light.intensity = 1;
     light.name = "ambientLight";
     cena.add(light);
 
