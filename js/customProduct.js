@@ -65,8 +65,19 @@ function init(){
                     acao2.push(misturador.clipAction(clipe));
                 }
                 if(elemento.isMesh){
-                    elemento.castShadow = true;
-                    elemento.receiveShadow = true;
+                    if(elemento.name != "Cube004" && elemento.name != "Cube007" && elemento.name != "Cube008" && elemento.name != "Cube008"
+                    && elemento.name != "Cube009" && elemento.name != "Cube010" && elemento.name != "Cube011" && elemento.name != "Shelves1"
+                    && elemento.name != "Cube" && elemento.name != "Cube001" && elemento.name != "Cube002" && elemento.name != "Cube003"
+                    && elemento.name != "Cube005" && elemento.name != "Cube006" && elemento.name != "Cube012" && elemento.name != "Cube013"
+                    && elemento.name != "Cube015" && elemento.name != "Cube016"){
+                        elemento.receiveShadow = true;
+                    }else{
+                        elemento.receiveShadow = false;
+                    }
+                    if(elemento.name != "Plane" && elemento.name != "Plane001"){
+                        elemento.castShadow = true;
+                    }
+                    
                     if(elemento.name == "bed-structure"){
                         estruturaCama = elemento;
                     }
