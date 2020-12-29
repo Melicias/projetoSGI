@@ -82,7 +82,7 @@ function init(){
     });
 
     var luz0 = new THREE.PointLight("white");
-    luz0.position.set( 10, 10, 10 );
+    luz0.position.set( 10, 10, 30 );
     luz0.name = "luz0";
     luz0.intensity = 1;
     luz0.castShadow = true;
