@@ -136,8 +136,17 @@ function init(){
         }
     }
 
-    var cor = localStorage["color"];
-    var textura = localStorage["textura"];
+    if (localStorage.getItem("color") === null) {
+        var cor = "#ffffff";
+    }else{
+        var cor = localStorage["color"];
+    }
+        
+    if (localStorage.getItem("textura") === null) {
+        var textura = "nenhuma";
+    }else{
+        var textura = localStorage["textura"];
+    }
 
     if(cor != 0){
         var dropDownCor = document.getElementById("DropDownCor");
