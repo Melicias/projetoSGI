@@ -93,19 +93,19 @@ function init(){
     });
 
     var luz0 = new THREE.PointLight("white");
-    luz0.position.set( 10, 10, 30 );
+    luz0.position.set( 0, 30, 10 );
     luz0.name = "luz0";
     luz0.intensity = 1;
     luz0.castShadow = true;
     cena.add(luz0);
     var luz1 = new THREE.PointLight("white");
-    luz1.position.set( 10, 20, 0 );
+    luz1.position.set( 20, 15, 20 );
     luz1.intensity = 0;
     luz1.castShadow = true;
     luz1.name = "luz1";
     cena.add(luz1);
     var luz2 = new THREE.PointLight("white");
-    luz2.position.set( 20, 10, 5 );
+    luz2.position.set( 7, 20, -5 );
     luz2.intensity = 0;
     luz2.castShadow = true;
     luz2.name = "luz2";
